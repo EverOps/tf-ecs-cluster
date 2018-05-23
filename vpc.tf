@@ -32,7 +32,7 @@ resource "aws_subnet" "internet" {
   availability_zone = "${data.aws_region.current.name}b"
 
   tags {
-    Name = "${var.env}.fargate.internet-b"
+    Name = "${var.env}.fargate.internet"
   }
 }
 
