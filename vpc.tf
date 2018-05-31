@@ -9,7 +9,7 @@ resource "aws_vpc" "fargate" {
 resource "aws_subnet" "nat-c" {
   vpc_id            = "${aws_vpc.fargate.id}"
   cidr_block        = "${var.vpc_cidr_first_three}.0/26"
-  availability_zone = "${data.aws_region.current.name}c"
+  availability_zone = "${var.aws_region}c"
 
   tags {
     Name = "${var.env}.fargate.nat-c"
@@ -19,7 +19,7 @@ resource "aws_subnet" "nat-c" {
 resource "aws_subnet" "nat-b" {
   vpc_id            = "${aws_vpc.fargate.id}"
   cidr_block        = "${var.vpc_cidr_first_three}.64/26"
-  availability_zone = "${data.aws_region.current.name}b"
+  availability_zone = "${var.aws_region}b"
 
   tags {
     Name = "${var.env}.fargate.nat-b"
@@ -29,7 +29,7 @@ resource "aws_subnet" "nat-b" {
 resource "aws_subnet" "internet" {
   vpc_id            = "${aws_vpc.fargate.id}"
   cidr_block        = "${var.vpc_cidr_first_three}.128/26"
-  availability_zone = "${data.aws_region.current.name}b"
+  availability_zone = "${var.aws_region}b"
 
   tags {
     Name = "${var.env}.fargate.internet"
